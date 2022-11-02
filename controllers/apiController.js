@@ -50,6 +50,7 @@ async function token(req, res) {
   const payload = {
     id: user._id,
     email: user.email,
+    following: user.following,
     // firstname: user.firstname,
     // lastname: user.lastname,
   };
@@ -66,6 +67,24 @@ async function create(req, res) {
   });
 
   res.json(tweet);
+}
+
+async function destroyTweet(req, res) {
+  const tweet = await Tweet.findByIdAndDelete(req.params.id);
+  res.json(tweet);
+}
+
+async function showTweets(req, res) {
+  if (req.auth.id) {
+    const tweets = await Tweet.find({ author: { $in: [req.auth.following, req.auth.id] } })
+      .populate("author")
+      .sort({ createdAt: -1 })
+      .limit(20);
+    res.json(tweets);
+  } else {
+    const tweets = await Tweet.find().populate("author").sort({ createdAt: -1 }).limit(20);
+    res.json(tweets);
+  }
 }
 
 async function index(req, res) {}
@@ -90,4 +109,6 @@ module.exports = {
   destroy,
   storeUser,
   token,
+  destroyTweet,
+  showTweets,
 };

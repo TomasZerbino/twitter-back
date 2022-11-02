@@ -13,4 +13,12 @@ apiRouter.post(
   apiController.create,
 );
 
+apiRouter.delete("/destroy/:id", apiController.destroyTweet);
+
+apiRouter.get(
+  "/home",
+  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
+  apiController.showTweets,
+);
+
 module.exports = apiRouter;
