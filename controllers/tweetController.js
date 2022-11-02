@@ -1,5 +1,5 @@
 const Tweet = require("../models/Tweet");
-const User = require("../models/Tweet");
+const User = require("../models/User");
 // Display a listing of the resource.
 
 async function deleteTweet(req, res) {

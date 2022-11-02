@@ -7,10 +7,10 @@ const APP_PORT = process.env.APP_PORT;
 const methodOverride = require("method-override");
 const app = express();
 const flash = require("express-flash");
-const passport = require("./config/passport-local");
+// const passport = require("./config/passport-local");
 const session = require("express-session");
 
-passport(app);
+// passport(app);
 
 app.use(flash());
 app.use(
@@ -21,11 +21,12 @@ app.use(
     saveUninitialized: true,
   }),
 );
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 routes(app);
 
