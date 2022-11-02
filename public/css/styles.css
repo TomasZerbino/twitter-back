@@ -1,0 +1,933 @@
+/* Colocar aquí CSS "propio" */
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: inter; */
+}
+
+/* .formContainer{
+    background-color: #074874;
+    height: 100vh;
+    display: flex;
+} */
+
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #074874;
+  justify-content: center;
+  align-items: center;
+}
+
+.twitterIcon {
+  color: white;
+  font-size: 4rem;
+  margin: 4rem;
+}
+
+.leftContainer {
+  max-width: 650px;
+  width: auto;
+  background-color: #4db1f5;
+  height: 57rem;
+  width: 40rem;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  /* width: 90%; */
+  max-width: 650px;
+  padding: 7rem;
+  border-radius: 0 1rem 1rem 0;
+  height: 57rem;
+}
+
+/* .smallSignIn {
+ text-decoration: none;
+  color: black;
+} */
+
+.btnForm {
+  background-color: #2e9ae1;
+  border-radius: 3rem;
+  height: 3rem;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 1s;
+}
+
+.btnForm:hover {
+  background-color: #4db1f5;
+  transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+  .form {
+    border-radius: 1rem;
+  }
+}
+
+/* ------------------------------------style de guille ☝🏽 */
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* body{
+    background-color: rgb(208, 202, 202);
+    align-items: center;
+} */
+
+/* .container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 40%;
+    border: 1px solid rgb(182, 180, 180);
+} */
+.followContainer {
+  width: 600px;
+  margin-left: 31px;
+}
+.user {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.userName {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+i {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.avatarImg {
+  width: 3rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.spanAvatar {
+  margin-left: 1rem;
+}
+
+.divFollow {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(182, 180, 180);
+}
+
+.divFollow button {
+  background-color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.smallUser {
+  font-weight: bold;
+}
+
+.btnActivo {
+  border-bottom: 2px solid #0087e1;
+}
+
+.btnFollow {
+  background-color: #1d9bf0;
+  color: white;
+  border-radius: 1.2rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.btnFollow:hover {
+  background-color: #0087e1;
+}
+/* -----------------------------------------Following guille  ☝🏽*/
+.card {
+  background: #f7f9f9;
+  border-radius: 15px;
+  margin: 1.7rem 0 0 31px;
+  padding: 16px 16px;
+  border: none;
+  width: fit-content;
+}
+
+.card-body {
+  padding: 0;
+  margin-bottom: 1rem;
+  width: 350px;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.card-subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card-sub {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #647788;
+}
+
+.card-sub2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #647788;
+}
+
+.cardAvatar {
+  margin: 0 0.2rem 1.2rem -0.4rem;
+}
+
+.btnFollow {
+  background: #1d9bf0;
+  border-radius: 45px;
+  padding: 0.15rem 0.4rem 0.3rem 0.4rem;
+  margin-bottom: 1.3rem;
+  margin-top: 0.5rem;
+  float: right;
+}
+
+.textInBtnCard {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    display: none;
+  }
+}
+/* -------------------------------------Sidebar Fran ☝ */
+.userName {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+#userData {
+  display: block;
+}
+.userEmail {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #647788;
+}
+.linkNavBar {
+  display: flex;
+  width: 103px;
+  margin-left: 16px;
+  margin-bottom: 37px;
+  padding: 0;
+}
+.linkNavBarSmall {
+  display: none;
+}
+.profile {
+  color: #000000;
+}
+.ellipsis {
+  color: #000000;
+}
+.homeNavBar {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.btnNavBar {
+  background: #1d9bf0;
+  border-radius: 50px;
+  width: 226px;
+}
+.btnNavBarSmall {
+  display: none;
+  background: #1d9bf0;
+  border-radius: 50px;
+  width: 52px;
+  height: 52px;
+}
+
+.btnNavBar:hover {
+  color: #ffffff !important;
+  background: #1d9bf0 !important;
+}
+
+.tweetNavBar {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+.twitterBird {
+  color: #1d9bf0;
+  font-size: 30px;
+  padding: 0;
+  margin-bottom: 37px;
+  margin-left: 0.8rem;
+}
+
+.feather {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+/* .navbarContainer{
+    width: 265px;
+  } */
+
+@media (max-width: 1400px) {
+  .ellipsis {
+    display: none;
+  }
+  #userData {
+    display: none;
+  }
+  .linkNavBar {
+    display: none;
+  }
+  .linkNavBarSmall {
+    width: 52px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 37px;
+  }
+  .btnNavBar {
+    display: none;
+  }
+  .twitterBird {
+    justify-content: center;
+    width: 52px;
+    margin-left: 0rem;
+  }
+  .btnNavBarSmall {
+    display: flex;
+  }
+}
+/* -------------------------------------Navbar Fran ☝ */
+* {
+  box-sizing: border-box;
+  font-family: inter;
+}
+.homeProfileImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  background-color: #cad8db;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 3px;
+}
+.homeProfileImg img {
+  width: 1.87rem;
+  height: 2.3rem;
+}
+.tweetTextarea {
+  border: none;
+  font-size: 1.25rem;
+  resize: none;
+  width: 425px;
+  padding: 12px 6px;
+}
+.btnTweet {
+  display: flex;
+  align-items: flex-end;
+}
+.btnTweet button {
+  padding: 9px 16px;
+  border-radius: 50px;
+  border: none;
+  color: #ffffff;
+  background-color: #1d9bf0;
+}
+.homeTitle {
+  font-size: 1.25rem;
+}
+.cardsContainer {
+  padding: 16px 19px;
+  border-bottom: 1px solid #f3f3f3;
+}
+.homeCenterContainer {
+  margin-left: 31px;
+  width: 600px;
+  min-height: 100vh;
+  border-left: 1px solid #f3f3f3;
+  border-right: 1px solid #f3f3f3;
+}
+.tweet {
+  width: 500px;
+  margin-left: 17px;
+}
+.tweetUsername {
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.tweetNikname {
+  margin-bottom: 4px;
+  color: #647788;
+  padding-left: 5px;
+}
+.tweetProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #cad8db;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.tweetProfileImg img {
+  width: 25px;
+  height: 31px;
+}
+.profileBanner {
+  background-color: #1d9bf0;
+  height: 171px;
+}
+.profileInfo {
+  position: relative;
+  height: 202px;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 12px 19px;
+}
+.ProfileImg {
+  width: 132px;
+  height: 132px;
+  overflow: hidden;
+  border-radius: 100px;
+  position: absolute;
+  top: -65px;
+  left: 20px;
+}
+.ProfileImg img {
+  width: 100%;
+}
+.witheBorder {
+  width: 142px;
+  height: 142px;
+  border-radius: 100px;
+  position: absolute;
+  top: -69px;
+  left: 15px;
+  background-color: #ffffff;
+}
+.profileFollowBtn {
+  height: 86px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-start;
+}
+.profileFollowBtn button {
+  padding: 7px 14px;
+  border: none;
+  background-color: #1d9bf0;
+  border-radius: 50px;
+  color: #ffffff;
+}
+.profileContainer {
+  width: 600px;
+  margin: auto;
+}
+.follows {
+  color: #647788;
+  margin-left: 7px;
+}
+.follows span {
+  font-weight: 700;
+  color: black;
+}
+.tweetsUnderline {
+  position: absolute;
+  width: 56px;
+  height: 4px;
+  background-color: #1d9bf0;
+  bottom: 0;
+}
+
+/* -------------------------------------Sidebar Fran ☝ */
+.card {
+  background: #f7f9f9;
+  border-radius: 15px;
+  margin: 1.7rem 0 0 31px;
+  padding: 16px 16px;
+  border: none;
+  width: fit-content;
+}
+
+.card-body {
+  padding: 0;
+  margin-bottom: 1rem;
+  width: 350px;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.card-subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card-sub {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #647788;
+}
+
+.card-sub2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #647788;
+}
+
+.cardAvatar {
+  margin: 0 0.2rem 1.2rem -0.4rem;
+}
+
+.btnFollow {
+  background: #1d9bf0;
+  border-radius: 45px;
+  padding: 0.15rem 0.4rem 0.3rem 0.4rem;
+  margin-bottom: 1.3rem;
+  margin-top: 0.5rem;
+  float: right;
+}
+
+.textInBtnCard {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media (max-width: 1199px) {
+  .card {
+    display: none;
+  }
+}
+/* -------------------------------------Sidebar Fran ☝ */
+.userName {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+#userData {
+  display: block;
+}
+.userEmail {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #647788;
+}
+.linkNavBar {
+  display: flex;
+  width: 103px;
+  margin-left: 16px;
+  margin-bottom: 37px;
+  padding: 0;
+}
+.linkNavBarSmall {
+  display: none;
+}
+.profile {
+  color: #000000;
+}
+.ellipsis {
+  color: #000000;
+}
+.homeNavBar {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.btnNavBar {
+  background: #1d9bf0;
+  border-radius: 50px;
+  width: 226px;
+}
+.btnNavBarSmall {
+  display: none;
+  background: #1d9bf0;
+  border-radius: 50px;
+  width: 52px;
+  height: 52px;
+}
+
+.btnNavBar:hover {
+  color: #ffffff !important;
+  background: #1d9bf0 !important;
+}
+
+.tweetNavBar {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+}
+
+.twitterBird {
+  color: #1d9bf0;
+  font-size: 30px;
+  padding: 0;
+  margin-bottom: 37px;
+}
+
+.feather {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+/* .navbarContainer{
+  width: 265px;
+} */
+
+@media (max-width: 1400px) {
+  .ellipsis {
+    display: none;
+  }
+  #userData {
+    display: none;
+  }
+  .linkNavBar {
+    display: none;
+  }
+  .linkNavBarSmall {
+    width: 52px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 37px;
+  }
+  .btnNavBar {
+    display: none;
+  }
+  .twitterBird {
+    justify-content: center;
+    width: 52px;
+    
+  }
+  .btnNavBarSmall {
+    display: flex;
+  }
+}
+/* -------------------------------------Navbar Fran ☝ */
+
+* {
+  box-sizing: border-box;
+  font-family: inter;
+}
+.homeProfileImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  background-color: #cad8db;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 3px;
+}
+.homeProfileImg img {
+  width: 1.87rem;
+  height: 2.3rem;
+}
+.tweetTextarea {
+  border: none;
+  font-size: 1.25rem;
+  resize: none;
+  width: 425px;
+  padding: 12px 6px;
+}
+.btnTweet {
+  display: flex;
+  align-items: flex-end;
+}
+.btnTweet button {
+  padding: 9px 16px;
+  border-radius: 50px;
+  border: none;
+  color: #ffffff;
+  background-color: #1d9bf0;
+}
+.homeTitle {
+  font-size: 1.25rem;
+}
+.cardsContainer {
+  padding: 16px 19px;
+  border-bottom: 1px solid #f3f3f3;
+}
+.homeCenterContainer {
+  max-width: 600px;
+  min-height: 100vh;
+  border-left: 1px solid #f3f3f3;
+  border-right: 1px solid #f3f3f3;
+}
+.tweet {
+  width: 500px;
+  margin-left: 17px;
+}
+.tweetUsername {
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.tweetNikname {
+  margin-bottom: 4px;
+  color: #647788;
+  padding-left: 5px;
+}
+.tweetProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #cad8db;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.tweetProfileImg img {
+  width: 25px;
+  height: 31px;
+}
+.profileBanner {
+  background-color: #1d9bf0;
+  height: 171px;
+}
+.profileInfo {
+  position: relative;
+  height: 202px;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 12px 19px;
+}
+.ProfileImg {
+  width: 132px;
+  height: 132px;
+  overflow: hidden;
+  border-radius: 100px;
+  position: absolute;
+  top: -65px;
+  left: 20px;
+}
+.ProfileImg img {
+  width: 100%;
+}
+.witheBorder {
+  width: 142px;
+  height: 142px;
+  border-radius: 100px;
+  position: absolute;
+  top: -69px;
+  left: 15px;
+  background-color: #ffffff;
+}
+.profileFollowBtn {
+  height: 86px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-start;
+}
+.profileFollowBtn button {
+  padding: 7px 14px;
+  border: none;
+  background-color: #1d9bf0;
+  border-radius: 50px;
+  color: #ffffff;
+}
+.profileContainer {
+  width: 600px;
+  margin: auto;
+}
+.follows {
+  color: #647788;
+  margin-left: 7px;
+}
+.follows span {
+  font-weight: 700;
+  color: black;
+}
+.tweetsUnderline {
+  position: absolute;
+  width: 56px;
+  height: 4px;
+  background-color: #1d9bf0;
+  bottom: 0;
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #074874;
+  justify-content: center;
+  align-items: center;
+}
+
+.twitterIcon {
+  color: white;
+  font-size: 4rem;
+  margin: 4rem;
+}
+
+.leftContainer {
+  max-width: 650px;
+  width: auto;
+  background-color: #4db1f5;
+  height: 57rem;
+  width: 40rem;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  /* width: 90%; */
+  max-width: 650px;
+  padding: 7rem;
+  border-radius: 0 1rem 1rem 0;
+  height: 57rem;
+}
+
+/* .smallSignIn {
+  text-decoration: none;
+  color: black;
+} */
+
+.btnForm {
+  background-color: #2e9ae1;
+  border-radius: 3rem;
+  height: 3rem;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 1s;
+}
+
+.btnForm:hover {
+  background-color: #4db1f5;
+  transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+  .form {
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .homeContainer {
+    justify-content: center;
+  }
+}
+
+.smallSignIn {
+  text-decoration: none;
+  color: black;
+}
+
+.btnForm {
+  background-color: #2e9ae1;
+  border-radius: 3rem;
+  height: 3rem;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 1s;
+}
+
+.btnForm:hover {
+  background-color: #4db1f5;
+  transform: scale(1.1);
+}
+.likeBtn {
+  background-color: #ffffff;
+  border: none;
+}
+
+@media (max-width: 992px) {
+  .form {
+    border-radius: 1rem;
+  }
+  #sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .homeContainer {
+    justify-content: center;
+  }
+  .hideLess1298 {
+    display: none;
+  }
+}
+/* -----------------------------------Home Tomas ☝*/
+
+.message {
+  color: red;
+  margin-top: 1.5rem;
+}
+
+.links {
+  text-decoration: none;
+}

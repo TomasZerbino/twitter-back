@@ -1,0 +1,131 @@
+/* .middleContainer {
+  width: 600px;
+  border: solid 1px lightgray;
+}
+
+.card {
+  background: #f7f9f9;
+  border-radius: 15px;
+  margin-top: 1.7rem;
+  padding-bottom: 0.5rem;
+  border: none;
+  width: 100%;
+  margin-left: 1.5rem;
+}
+
+.card-body2 {
+  margin-bottom: -1.7rem;
+}
+
+.card-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  margin-left: 1rem;
+  margin-top: 1.7rem;
+}
+
+.card-subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card-sub {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #647788;
+}
+
+.card-sub2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #647788;
+}
+
+.cardAvatar {
+  margin-right: 0.2rem;
+  margin-bottom: 1.2rem;
+  margin-left: -0.4rem;
+}
+
+.btnFollow {
+  background: #1d9bf0;
+  border-radius: 45px;
+  padding-top: 0.15rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-bottom: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.btnFollow2 {
+  background: #1d9bf0;
+  border-radius: 45px;
+  padding-top: 0.15rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-bottom: 1.3rem;
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.textInBtnCard {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media (min-width: 1120px) {
+  .btnFollow {
+    float: right;
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .btnFollow {
+    display: none;
+  }
+}
+
+@media (min-width: 1150px) {
+  .btnFollow2 {
+    display: none;
+  }
+}
+
+@media (max-width: 1020px) {
+  .hideLess1020 {
+    display: none;
+  }
+} */

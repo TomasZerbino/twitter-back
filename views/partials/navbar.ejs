@@ -1,0 +1,76 @@
+<section id="sidebar">
+  <div class="container-fluid navbarContainer px-0">
+    <div class="d-flex flex-column align-items-center pt-2 min-vh-100">
+      <ul class="d-flex  nav nav-pills flex-column mb-auto align-items-start w-lg-100" id="menu">
+        <li>
+          <a href="" class="d-flex nav-link px-0 twitterBird">
+            <img src="../../img/twitter-logo.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="/" class="align-items-center justify-content-between nav-link px-0 linkNavBar">
+            <img src="./img/home.svg" alt=""><span class="homeNavBar">Home</span>
+          </a>
+          <a href="/" class="nav-link px-0 py-0 linkNavBarSmall">
+            <img src="./img/home.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="/profile" class="align-items-center justify-content-between nav-link px-0 linkNavBar">
+            <img src="./img/profile.svg" alt=""><span class="homeNavBar">Profile</span>
+          </a>
+          <a href="profile"class="nav-link px-0 py-0 linkNavBarSmall">
+            <img src="./img/profile.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="" class="btn align-middle text-center btnNavBar" type="button">
+            <span class="align-middle tweetNavBar">Tweet</span>
+          </a>
+          <a href="" class="btn text-center align-items-center btnNavBarSmall" type="button">
+            <img class="feather" src="img/Vector (1).svg" alt="feather"/>
+          </a>
+        </li>
+      </ul>
+
+      <% if(user){ %> 
+      <div class="pb-5">
+        <div
+          class="d-flex align-items-center text-decoration-none"
+          id=""
+          tabindex="0"
+          class="btn btn-lg btn-danger"
+          data-bs-toggle="popover"
+          data-bs-trigger="click"
+          data-bs-container="body"
+          data-bs-html="true"
+          data-bs-placement="top"
+          data-bs-content="<a class='text-danger' href='/logout'>Logout @<%= user.username %></a>"
+        >
+          <img
+          <% if (!user.avatar) { %> 
+            src='img/profileHome.svg' 
+            <% } else if (user.avatar.includes('http') ) { %> 
+            src="<%= user.avatar %>" 
+            <% } else { %>
+              src="img/<%= user.avatar %>" 
+            <% } %>
+            alt="avatar"
+            width="45"
+            height="45"
+            class="rounded-circle"
+          />
+          <div class="hideLess1298">
+            <span class="d-none d-sm-block mx-3 userNameProf"
+              ><%= user.firstname %> <%= user.lastname %></span
+            >
+            <span class="d-none d-sm-block mx-3 userEmail">@<%= user.username %></span>
+          </div>
+          
+          <span class="ellipsis"><i class="fa-solid fa-ellipsis"></i></span>
+        </div>
+      </div>
+      <% } %> 
+    </div>
+  </div>
+</section> 
