@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const cors = require("cors");
 const express = require("express");
 const routes = require("./routes");
 const { dbInitialSetup } = require("./dbInitialSetup");
@@ -7,6 +7,7 @@ const APP_PORT = process.env.APP_PORT;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 routes(app);
 

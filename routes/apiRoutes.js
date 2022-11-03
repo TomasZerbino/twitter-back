@@ -3,7 +3,7 @@ const apiRouter = express.Router();
 const apiController = require("../controllers/apiController");
 const { expressjwt: checkJwt } = require("express-jwt");
 
-apiRouter.post("/register", apiController.storeUser);
+apiRouter.post("/user", apiController.storeUser);
 
 apiRouter.post("/token", apiController.token);
 
@@ -13,7 +13,7 @@ apiRouter.post(
   apiController.createTweet,
 );
 
-apiRouter.delete("/destroy/:id", apiController.destroyTweet);
+apiRouter.delete("/tweet/:id", apiController.destroyTweet);
 
 apiRouter.get(
   "/tweets",
