@@ -2,6 +2,7 @@ const Tweet = require("../models/Tweet");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const formidable = require("formidable");
 
 async function storeUser(req, res) {
   const userAutentication = await User.findOne({ email: req.body.email });
@@ -34,6 +35,45 @@ async function storeUser(req, res) {
   }
 }
 
+// async function store(req, res) {
+//   const form = formidable({
+//     multiples: true,
+//     uploadDir: __dirname + "/../public/img",
+//     keepExtensions: true,
+//   });
+
+//   form.parse(req, async (err, fields, files) => {
+//     const userAutentication = await User.findOne({ email: fields.email });
+//     const passwordAutentication = fields.password === fields.confirmPassword;
+//     if (!userAutentication & passwordAutentication) {
+//       const hashedPassword = await bcrypt.hash(fields.password, 10);
+
+//       const userCreated = await User.create({
+//         firstname: fields.firstname,
+//         lastname: fields.lastname,
+//         email: fields.email,
+//         username: fields.username,
+//         password: hashedPassword,
+//         avatar: files.image.newFilename,
+//       });
+
+//       if (userCreated) {
+//         req.login(userCreated, function () {
+//           res.redirect("/login");
+//         });
+//       }
+//     } else {
+//       if (!passwordAutentication) {
+//         req.flash("user", "⚠️  Password confirmation doesn't match Password!");
+//         res.redirect("back");
+//       } else {
+//         req.flash("user", "⚠️  User already exists!");
+//         res.redirect("back");
+//       }
+//     }
+//   });
+// }
+
 async function token(req, res) {
   const user = await User.findOne({ email: req.body.email });
   const storedHash = user.password;
@@ -59,7 +99,7 @@ async function token(req, res) {
   res.json({ token });
 }
 
-async function create(req, res) {
+async function createTweet(req, res) {
   const tweet = await Tweet.create({
     content: req.body.content,
     author: req.auth.id,
@@ -87,26 +127,22 @@ async function showTweets(req, res) {
   }
 }
 
-async function index(req, res) {}
-
-async function show(req, res) {}
-
-async function store(req, res) {}
-
-async function edit(req, res) {}
-
-async function update(req, res) {}
-
-async function destroy(req, res) {}
+async function updateLikes(req, res) {
+  const tweet = await Tweet.findById(req.params.id);
+  if (tweet.likes.includes(req.auth.id)) {
+    const liked = tweet.likes.indexOf(req.auth.id);
+    tweet.likes.splice(liked, 1);
+  } else {
+    tweet.likes.push(req.auth.id);
+  }
+  await tweet.save();
+  // res.redirect("/");
+  res.json(tweet.likes);
+}
 
 module.exports = {
-  index,
-  show,
-  create,
-  store,
-  edit,
-  update,
-  destroy,
+  createTweet,
+  updateLikes,
   storeUser,
   token,
   destroyTweet,
