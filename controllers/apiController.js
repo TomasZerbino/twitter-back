@@ -4,75 +4,87 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const formidable = require("formidable");
 
-async function storeUser(req, res) {
-  const userAutentication = await User.findOne({ email: req.body.email });
-  const passwordAutentication = req.body.password === req.body.confirmPassword;
-  if (!userAutentication && passwordAutentication) {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const userCreated = await User.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      username: req.body.username,
-      password: hashedPassword,
-    });
-    if (userCreated) {
-      //   req.login(userCreated, function () {
-      //     res.redirect("/login");
-      //   });
-      return res.json(userCreated);
-    }
-  } else {
-    if (!passwordAutentication) {
-      res.json("Password confirmation doesn't match Password");
-      //   req.flash("user", "⚠️  Password confirmation doesn't match Password!");
-      //   res.redirect("back");
-    } else {
-      res.json("User already exists");
-      //   req.flash("user", "⚠️  User already exists!");
-      //   res.redirect("back");
-    }
-  }
-}
-
-// async function store(req, res) {
-//   const form = formidable({
-//     multiples: true,
-//     uploadDir: __dirname + "/../public/img",
-//     keepExtensions: true,
-//   });
-
-//   form.parse(req, async (err, fields, files) => {
-//     const userAutentication = await User.findOne({ email: fields.email });
-//     const passwordAutentication = fields.password === fields.confirmPassword;
-//     if (!userAutentication & passwordAutentication) {
-//       const hashedPassword = await bcrypt.hash(fields.password, 10);
-
-//       const userCreated = await User.create({
-//         firstname: fields.firstname,
-//         lastname: fields.lastname,
-//         email: fields.email,
-//         username: fields.username,
-//         password: hashedPassword,
-//         avatar: files.image.newFilename,
-//       });
-
-//       if (userCreated) {
-//         req.login(userCreated, function () {
-//           res.redirect("/login");
-//         });
-//       }
-//     } else {
-//       if (!passwordAutentication) {
-//         req.flash("user", "⚠️  Password confirmation doesn't match Password!");
-//         res.redirect("back");
-//       } else {
-//         req.flash("user", "⚠️  User already exists!");
-//         res.redirect("back");
-//       }
+// async function storeUser(req, res) {
+//   console.log(req.body);
+//   const userAutentication = await User.findOne({ email: req.body.email });
+//   const passwordAutentication = req.body.password === req.body.confirmPassword;
+//   if (!userAutentication && passwordAutentication) {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//     const userCreated = await User.create({
+//       firstname: req.body.firstname,
+//       lastname: req.body.lastname,
+//       email: req.body.email,
+//       username: req.body.username,
+//       password: hashedPassword,
+//     });
+//     if (userCreated) {
+//       //   req.login(userCreated, function () {
+//       //     res.redirect("/login");
+//       //   });
+//       return res.json(userCreated);
 //     }
-//   });
+//   } else {
+//     if (!passwordAutentication) {
+//       res.json("Password confirmation doesn't match Password");
+//       //   req.flash("user", "⚠️  Password confirmation doesn't match Password!");
+//       //   res.redirect("back");
+//     } else {
+//       res.json("User already exists");
+//       //   req.flash("user", "⚠️  User already exists!");
+//       //   res.redirect("back");
+//     }
+//   }
 // }
+
+function storeUser(req, res) {
+  const form = formidable({
+    multiples: true,
+    keepExtensions: true,
+    uploadDir: __dirname + "/../public/img",
+  });
+
+  form.parse(req, async (err, fields, files) => {
+    const userAutentication = await User.findOne({ email: fields.email });
+    const passwordAutentication = fields.password === fields.confirmPassword;
+    if (!userAutentication & passwordAutentication) {
+      const hashedPassword = await bcrypt.hash(fields.password, 10);
+
+      const userCreated = await User.create({
+        firstname: fields.firstname,
+        lastname: fields.lastname,
+        email: fields.email,
+        username: fields.username,
+        password: hashedPassword,
+        avatar: files.image.newFilename,
+      });
+
+      if (userCreated) {
+        const user = await User.findOne({ email: fields.email });
+        const payload = {
+          id: user._id,
+          email: user.email,
+          following: user.following,
+          // firstname: user.firstname,
+          // lastname: user.lastname,
+        };
+
+        const token = jwt.sign(payload, process.env.JWT_SECRET);
+        console.log(token);
+        return res.json({ token });
+      }
+    } else {
+      if (!passwordAutentication) {
+        res.json("Password confirmation doesn't match Password");
+        //   req.flash("user", "⚠️  Password confirmation doesn't match Password!");
+        //   res.redirect("back");
+      } else {
+        res.json("User already exists");
+        //   req.flash("user", "⚠️  User already exists!");
+        res.redirect("back");
+      }
+    }
+  });
+}
 
 async function token(req, res) {
   const user = await User.findOne({ email: req.body.email });
@@ -96,6 +108,7 @@ async function token(req, res) {
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
+  console.log(token);
   res.json({ token });
 }
 
