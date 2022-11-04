@@ -103,6 +103,7 @@ async function token(req, res) {
   const payload = {
     id: user._id,
     email: user.email,
+    username: user.username,
     following: user.following,
     // firstname: user.firstname,
     // lastname: user.lastname,
@@ -143,15 +144,16 @@ async function showTweets(req, res) {
 
 async function updateLikes(req, res) {
   const tweet = await Tweet.findById(req.params.id);
-  if (tweet.likes.includes(req.auth.id)) {
-    const liked = tweet.likes.indexOf(req.auth.id);
+  const userId = req.auth.id;
+  if (tweet.likes.includes(userId)) {
+    const liked = tweet.likes.indexOf(userId);
     tweet.likes.splice(liked, 1);
   } else {
-    tweet.likes.push(req.auth.id);
+    tweet.likes.push(userId);
   }
   await tweet.save();
-  // res.redirect("/");
-  res.json(tweet.likes);
+
+  res.json({ likes: tweet.likes, userId });
 }
 
 module.exports = {
