@@ -64,6 +64,7 @@ function storeUser(req, res) {
           id: user._id,
           email: user.email,
           following: user.following,
+          username: user.username,
           // firstname: user.firstname,
           // lastname: user.lastname,
         };
