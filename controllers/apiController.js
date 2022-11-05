@@ -141,6 +141,19 @@ async function showTweets(req, res) {
   }
 }
 
+async function showmyTweets(req,res){
+  if(req.auth.id){
+    const tweets = await Tweet.find({autor:{$in: [req.auth.id]}})
+      .populate("author")
+      .sort({createdAt: -1})
+      .limit(20);
+    res.json(tweets);
+  }else{
+    const tweets = await Tweet.find().populate("author").sort({createdAt: -1}).limit(20);
+    res.json(tweet)
+  }
+}
+
 async function updateLikes(req, res) {
   const tweet = await Tweet.findById(req.params.id);
   if (tweet.likes.includes(req.auth.id)) {
