@@ -71,7 +71,7 @@ function storeUser(req, res) {
 
         const token = jwt.sign(payload, process.env.JWT_SECRET);
         console.log(token);
-        return res.json({ token });
+        return res.json({ token, userId: user._id, username: user.username, email: user.email });
       }
     } else {
       if (!passwordAutentication) {
@@ -111,7 +111,7 @@ async function token(req, res) {
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
   console.log(token);
-  res.json({ token });
+  res.json({ token, userId: user._id });
 }
 
 async function createTweet(req, res) {
@@ -153,7 +153,7 @@ async function updateLikes(req, res) {
   }
   await tweet.save();
 
-  res.json({ likes: tweet.likes, userId });
+  res.json(tweet);
 }
 
 module.exports = {
