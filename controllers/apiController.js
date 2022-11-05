@@ -70,7 +70,6 @@ function storeUser(req, res) {
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        console.log(token);
         return res.json({ token });
       }
     } else {
@@ -110,7 +109,6 @@ async function token(req, res) {
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
-  console.log(token);
   res.json({ token });
 }
 
@@ -151,7 +149,7 @@ async function showmyTweets(req,res){
     res.json(tweets);
   }else{
     const tweets = await Tweet.find().populate("author").sort({createdAt: -1}).limit(20);
-    res.json(tweet)
+    res.json(tweets)
   }
 }
 
@@ -176,4 +174,5 @@ module.exports = {
   token,
   destroyTweet,
   showTweets,
+  showmyTweets
 };
