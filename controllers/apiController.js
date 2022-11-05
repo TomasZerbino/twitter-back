@@ -111,7 +111,7 @@ async function token(req, res) {
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
   console.log(token);
-  res.json({ token, userId: user._id });
+  res.json({ token, userId: user._id, username: user.username, email: user.email });
 }
 
 async function createTweet(req, res) {
@@ -132,6 +132,19 @@ async function destroyTweet(req, res) {
 async function showTweets(req, res) {
   if (req.auth.id) {
     const tweets = await Tweet.find({ author: { $in: [req.auth.following, req.auth.id] } })
+      .populate("author")
+      .sort({ createdAt: -1 })
+      .limit(20);
+    res.json(tweets);
+  } else {
+    const tweets = await Tweet.find().populate("author").sort({ createdAt: -1 }).limit(20);
+    res.json(tweets);
+  }
+}
+
+async function showmyTweets(req, res) {
+  if (req.auth.id) {
+    const tweets = await Tweet.find({ autor: { $in: [req.auth.id] } })
       .populate("author")
       .sort({ createdAt: -1 })
       .limit(20);
@@ -163,4 +176,5 @@ module.exports = {
   token,
   destroyTweet,
   showTweets,
+  showmyTweets,
 };
