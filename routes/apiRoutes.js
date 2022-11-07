@@ -24,7 +24,19 @@ apiRouter.get(
 apiRouter.get(
   "/tweets/:id",
   checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
-  apiController.showmyTweets,
+  apiController.showMyTweets,
+)
+
+apiRouter.get(
+  "/followers",
+  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
+  apiController.followers,
+)
+
+apiRouter.get(
+  "/following",
+  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
+  apiController.following,
 )
 
 apiRouter.patch(
