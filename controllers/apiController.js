@@ -65,13 +65,13 @@ function storeUser(req, res) {
           email: user.email,
           following: user.following,
           username: user.username,
-          // firstname: user.firstname,
-          // lastname: user.lastname,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          avatar: user.avatar,
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        console.log(token);
-        return res.json({ token, userId: user._id, username: user.username, email: user.email });
+        return res.json({ token, userId: user._id, username: user.username, email: user.email, firstname: user.firstname, lastname: user.lastname, followers: user.followers, following: user.following, avatar: user.avatar, });
       }
     } else {
       if (!passwordAutentication) {
@@ -105,13 +105,15 @@ async function token(req, res) {
     email: user.email,
     username: user.username,
     following: user.following,
-    // firstname: user.firstname,
-    // lastname: user.lastname,
+    followers: user.followers,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    avatar: user.avatar,
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
   console.log(token);
-  res.json({ token, userId: user._id, username: user.username, email: user.email });
+  res.json({ token, userId: user._id, username: user.username, email: user.email, firstname: user.firstname, lastname: user.lastname,followers: user.followers, following: user.following, avatar: user.avatar,});
 }
 
 async function createTweet(req, res) {
