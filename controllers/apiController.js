@@ -71,7 +71,17 @@ function storeUser(req, res) {
         };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        return res.json({ token, userId: user._id, username: user.username, email: user.email, firstname: user.firstname, lastname: user.lastname, followers: user.followers, following: user.following, avatar: user.avatar, });
+        return res.json({
+          token,
+          userId: user._id,
+          username: user.username,
+          email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          followers: user.followers,
+          following: user.following,
+          avatar: user.avatar,
+        });
       }
     } else {
       if (!passwordAutentication) {
@@ -113,7 +123,17 @@ async function token(req, res) {
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
   console.log(token);
-  res.json({ token, userId: user._id, username: user.username, email: user.email, firstname: user.firstname, lastname: user.lastname,followers: user.followers, following: user.following, avatar: user.avatar,});
+  res.json({
+    token,
+    userId: user._id,
+    username: user.username,
+    email: user.email,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    followers: user.followers,
+    following: user.following,
+    avatar: user.avatar,
+  });
 }
 
 async function createTweet(req, res) {
@@ -158,13 +178,32 @@ async function showMyTweets(req, res) {
 }
 
 async function followers(req, res) {
-  let loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("followers");
+  const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("followers");
   res.json(loggedUser);
 }
 
 async function following(req, res) {
-  let loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("following");
+  const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("following");
   res.json(loggedUser);
+}
+
+async function follow(req, res) {
+  const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } });
+  const followee = await User.findById(req.params.id);
+  let following = loggedUser.following;
+  following.push(followee._id);
+
+  loggedUser.save();
+}
+
+async function unfollow(req, res) {
+  const followee = await User.findById(req.params.id);
+  const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } });
+  const following = loggedUser.following;
+  const indexfollowee = following.indexOf(followee._id);
+  following.splice(indexfollowee, 1);
+
+  loggedUser.save();
 }
 
 async function updateLikes(req, res) {
@@ -191,4 +230,6 @@ module.exports = {
   showMyTweets,
   followers,
   following,
+  follow,
+  unfollow,
 };

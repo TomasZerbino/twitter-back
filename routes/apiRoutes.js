@@ -25,19 +25,31 @@ apiRouter.get(
   "/tweets/:id",
   checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
   apiController.showMyTweets,
-)
+);
 
 apiRouter.get(
   "/followers",
   checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
   apiController.followers,
-)
+);
+
+apiRouter.get(
+  "/follow/:id",
+  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
+  apiController.follow,
+);
+
+apiRouter.get(
+  "/unfollow/:id",
+  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
+  apiController.unfollow,
+);
 
 apiRouter.get(
   "/following",
   checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
   apiController.following,
-)
+);
 
 apiRouter.patch(
   "/likes/:id",
