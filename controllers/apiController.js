@@ -105,8 +105,8 @@ async function token(req, res) {
     email: user.email,
     username: user.username,
     following: user.following,
-    // firstname: user.firstname,
-    // lastname: user.lastname,
+    firstname: user.firstname,
+    lastname: user.lastname,
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET);
@@ -142,7 +142,7 @@ async function showTweets(req, res) {
   }
 }
 
-async function showmyTweets(req, res) {
+async function showMyTweets(req, res) {
   if (req.auth.id) {
     const tweets = await Tweet.find({ autor: { $in: [req.auth.id] } })
       .populate("author")
@@ -153,6 +153,16 @@ async function showmyTweets(req, res) {
     const tweets = await Tweet.find().populate("author").sort({ createdAt: -1 }).limit(20);
     res.json(tweets);
   }
+}
+
+async function followers(req, res) {
+  let loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("followers");
+  res.json(loggedUser);
+}
+
+async function following(req, res) {
+  let loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } }).populate("following");
+  res.json(loggedUser);
 }
 
 async function updateLikes(req, res) {
@@ -176,5 +186,7 @@ module.exports = {
   token,
   destroyTweet,
   showTweets,
-  showmyTweets,
+  showMyTweets,
+  followers,
+  following,
 };
