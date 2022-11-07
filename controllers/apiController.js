@@ -40,7 +40,7 @@ function storeUser(req, res) {
   const form = formidable({
     multiples: true,
     keepExtensions: true,
-    uploadDir: __dirname + "/../public/img"
+    uploadDir: __dirname + "/../public/img",
   });
 
   form.parse(req, async (err, fields, files) => {
@@ -190,20 +190,27 @@ async function following(req, res) {
 async function follow(req, res) {
   const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } });
   const followee = await User.findById(req.params.id);
-  let following = loggedUser.following;
-  following.push(followee._id);
-
-  loggedUser.save();
-}
-
-async function unfollow(req, res) {
-  const followee = await User.findById(req.params.id);
-  const loggedUser = await User.findOne({ _id: { $in: [req.auth.id] } });
   const following = loggedUser.following;
-  const indexfollowee = following.indexOf(followee._id);
-  following.splice(indexfollowee, 1);
-
-  loggedUser.save();
+  const followersOfFollowee = followee.followers;
+  const isFollowed = following.find((e) => {
+    // console.log(followersOfFollowee);
+    // console.log(loggedUser._id);
+    // console.log(followee._id);
+    // console.log(following);
+    // console.log(followersOfFollowee);
+    return e._id.toString() === req.params.id;
+  });
+  if (isFollowed) {
+    const indexfollowee = following.indexOf(followee._id);
+    following.splice(indexfollowee, 1);
+    const indexLoggedUser = followersOfFollowee.indexOf(loggedUser._id);
+    following.splice(indexLoggedUser, 1);
+  } else {
+    following.push(followee._id);
+    followersOfFollowee.push(loggedUser._id);
+  }
+  await loggedUser.save();
+  res.json(followersOfFollowee);
 }
 
 async function updateLikes(req, res) {
@@ -231,5 +238,4 @@ module.exports = {
   followers,
   following,
   follow,
-  unfollow,
 };

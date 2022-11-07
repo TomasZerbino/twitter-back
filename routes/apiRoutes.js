@@ -33,16 +33,10 @@ apiRouter.get(
   apiController.followers,
 );
 
-apiRouter.get(
+apiRouter.post(
   "/follow/:id",
   checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
   apiController.follow,
-);
-
-apiRouter.get(
-  "/unfollow/:id",
-  checkJwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }),
-  apiController.unfollow,
 );
 
 apiRouter.get(
