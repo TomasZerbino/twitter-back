@@ -193,7 +193,7 @@ async function follow(req, res) {
   const following = loggedUser.following;
   const followersOfFollowee = followee.followers;
   const isFollowed = following.find((e) => {
-    // console.log(followersOfFollowee);
+    console.log(followersOfFollowee);
     // console.log(loggedUser._id);
     // console.log(followee._id);
     // console.log(following);
@@ -209,6 +209,7 @@ async function follow(req, res) {
     following.push(followee._id);
     followersOfFollowee.push(loggedUser._id);
   }
+  await followee.save();
   await loggedUser.save();
   res.json(followersOfFollowee);
 }
